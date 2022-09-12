@@ -12,12 +12,9 @@ const mapDispatchToProps = (dispatch) => ({
 
 function MoviePage(props) {
     const { movies, isCallGetMovies } = props.movie;
-
-    useEffect(() => {
-        if (!isCallGetMovies) {
-            props.onGetMovies();
-        }
-    }, ['']);
+    if (!isCallGetMovies) {
+        props.onGetMovies();
+    }
 
     return (
         <div className="page movie-page">
