@@ -1,9 +1,16 @@
 import React from "react";
+import Movie from "./movie";
 
-function Movies() {
+function Movies(props) {
     return (
         <div>
-            Movies
+            {props.items.length ? 
+                props.items.map((item,index)=>{
+                    return <Movie key={index} item={item} />
+                })
+                :
+                <h4>No movies available</h4>
+            }
         </div>
     );
 }

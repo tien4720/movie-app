@@ -1,11 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import Movies from "../components/movies";
+import { getMovies } from "../actions/movieActions";
 
-function MoviePage() {
+const mapStateToProps = (state) => ({movie: state.movie});
+const mapDispatchToProps = (dispatch) => ({
+    onGetMovies: () => {
+        dispatch(getMovies());
+    },
+});
+
+function MoviePage(props) {
+    const { movies, isCallGetMovies } = props.movie;
+
+    useEffect(() => {
+        if (!isCallGetMovies) {
+            props.onGetMovies();
+        }
+    }, ['']);
+
     return (
-        <div>
-            Movie Page
+        <div className="page movie-page">
+            <Movies items={movies} />
         </div>
     );
 }
 
-export default MoviePage;
+export default connect(mapStateToProps, mapDispatchToProps)(MoviePage);

@@ -1,12 +1,17 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import Header from "../components/header";
+import Container from 'react-bootstrap/Container';
 
-function HomePage() {
+function Layout() {
     return (
-        <div>
-            <Outlet />
-        </div>
+        <Container>
+            <Header></Header>
+            <div className="main-container">
+                <Outlet />
+            </div>
+        </Container>
     );
 }
 
-export default HomePage;
+export default Layout;
