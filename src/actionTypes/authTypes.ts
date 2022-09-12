@@ -45,6 +45,11 @@ export interface LogoutAction {
     type: typeof LOGOUT_ACTION;
 }
 
+export const RESET_RESPONSE = 'moviesActionTypes/RESET_RESPONSE'
+export interface ResetResponse {
+    type: typeof RESET_RESPONSE;
+}
+
 export type AuthAction =
     | LoginAction
     | RegisterAction
@@ -52,4 +57,5 @@ export type AuthAction =
     | LoginFailureAction
     | RegisterSuccessAction
     | RegisterFailureAction
-    | LogoutAction;
+    | LogoutAction
+    | ResetResponse;

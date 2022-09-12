@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { register } from "../actions/authActions";
+import { register, resetResponse } from "../actions/authActions";
 import "./Auth.css";
 
 const mapStateToProps = (state) => ({auth: state.auth});
@@ -11,12 +11,16 @@ const mapDispatchToProps = (dispatch) => ({
     onRegister: (username, password) => {
         dispatch(register({username, password}));
     },
+    onResetResponse: () => {
+        dispatch(resetResponse());
+    }
 });
 
 function RegisterPage(props) {
     const navigate = useNavigate();
     React.useEffect(() => {
         if (props.auth.response === 'success') {
+            props.onResetResponse();
             navigate('/');
         }
     });

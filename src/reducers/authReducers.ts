@@ -31,6 +31,11 @@ export default function authReducer(state: actions.User = initialState, action: 
                 username: '',
                 response: '',
             };
+        case actions.RESET_RESPONSE:
+            return {
+                ...state,
+                response: ''
+            }
         default:
             return state;
     }

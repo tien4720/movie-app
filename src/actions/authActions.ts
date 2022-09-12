@@ -49,4 +49,8 @@ export function logout(): actions.LogoutAction {
     }
 }
 
-
+export function resetResponse() {
+    return {
+        type: actions.RESET_RESPONSE
+    }
+}
